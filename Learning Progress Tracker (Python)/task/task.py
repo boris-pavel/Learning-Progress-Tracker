@@ -1,6 +1,8 @@
 import re
 from functools import cmp_to_key
 
+help_functions = ['add students', 'list', 'add points', 'find', 'statistics', 'notify', 'exit']
+
 
 class StringId(Exception):
 
@@ -300,7 +302,7 @@ def main():
             case 'back':
                 print('Enter \'exit\' to exit the program')
             case 'add students':
-                print('Enter student credentials or \'back\' to return')
+                print('Enter student credentials \'first_name last_name email\' or \'back\' to return')
                 student_count = 0
                 while True:
                     student = input().split()
@@ -341,7 +343,7 @@ def main():
                         print(student.id)
 
             case 'add points':
-                print('Enter an id and points or \'back\' to return')
+                print('Enter an id and points \'id python dsa databases flask\' or \'back\' to return')
                 while True:
                     points = input()
                     if points == 'back':
@@ -428,7 +430,7 @@ def main():
                     if not found:
                         print(f'No student is found for id={find_inp}')
             case 'statistics':
-                print('Type the name of a course to see details or \'back\' to quit:')
+                print('Type the name of a course \'python, dsa, databases, flask\' to see details or \'back\' to quit:')
                 if not calculate_most_popular(student_list):
                     most_popular = 'n/a'
                     print(f'Most popular: {most_popular}')
@@ -522,10 +524,10 @@ def main():
                     if student_notified:
                         count_notify += 1
                 print(f'Total {count_notify} have been notified.')
-
-
+            case 'help':
+                print('Available functions: ' + ' | '.join(help_functions))
             case _:
-                print('Error: unknown command')
+                print('Error: unknown command. Hint: Type \'help\'')
 
 
 main()
